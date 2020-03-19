@@ -4,9 +4,10 @@ keywords: mac, install, download, run, docker, local
 title: Install Docker Desktop on Mac
 ---
 
-  To download Docker Desktop, go to Docker Hub and sign in with your Docker ID.
+Docker Desktop for Mac is the [Community](https://www.docker.com/community-edition) version of Docker for Mac.
+You can download Docker Desktop for Mac from Docker Hub.
 
-[Download from Docker Hub](https://hub.docker.com/?overlay=onboarding){: .button .outline-btn}
+[Download from Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-mac/){: .button .outline-btn}
 
 By downloading Docker Desktop, you agree to the terms of the [Docker Software End User License Agreement](https://www.docker.com/legal/docker-software-end-user-license-agreement){: target="_blank" class="_"} and the [Docker Data Processing Agreement](https://www.docker.com/legal/data-processing-agreement){: target="_blank" class="_"}.
 
@@ -28,21 +29,21 @@ VirtualBox system. To learn more, see [Docker Desktop for Mac vs. Docker Toolbox
 
 Your Mac must meet the following requirements to successfully install Docker Desktop:
 
-- Mac hardware must be a 2010 or newer model, with Intel’s hardware support for memory management unit (MMU) virtualization, including Extended Page Tables (EPT) and Unrestricted Mode. You can check to see if your machine has this support by running the following command in a terminal: `sysctl kern.hv_support`
+- **Mac hardware must be a 2010 or a newer model**, with Intel’s hardware support for memory management unit (MMU) virtualization, including Extended Page Tables (EPT) and Unrestricted Mode. You can check to see if your machine has this support by running the following command in a terminal: `sysctl kern.hv_support`
 
   If your Mac supports the Hypervisor framework, the command prints `kern.hv_support: 1`.
 
-- macOS must be version 10.13 or newer. We recommend upgrading to the latest version of macOS.
+- **macOS must be version 10.13 or newer**. That is, Catalina, Mojave, or High Sierra. We recommend upgrading to the latest version of macOS.
 
   If you experience any issues after upgrading your macOS to version 10.15, you must install the latest version of Docker Desktop to be compatible with this version of macOS.
 
-  **Note:** Docker supports Docker Desktop on the most recent versions of macOS. That is, the current release of macOS and the previous two releases. As new major versions of macOS are made generally available, Docker will stop supporting the oldest version and support the newest version of macOS (in addition to the previous two releases).
+  **Note:** Docker supports Docker Desktop on the most recent versions of macOS. That is, the current release of macOS and the previous two releases. Docker Desktop currently supports macOS Catalina, macOS Mojave, and macOS High Sierra.
+
+    As new major versions of macOS are made generally available, Docker stops supporting the oldest version and support the newest version of macOS (in addition to the previous two releases).
 
 - At least 4 GB of RAM.
 
 - VirtualBox prior to version 4.3.30 must not be installed as it is not compatible with Docker Desktop.
-
-**Note**: If your system does not satisfy these requirements, you can install [Docker Toolbox](/toolbox/overview.md), which uses Oracle VirtualBox instead of HyperKit.
 
 ## What's included in the installer
 

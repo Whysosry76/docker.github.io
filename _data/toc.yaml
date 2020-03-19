@@ -6,9 +6,6 @@ horizontalnav:
 - title: Product manuals
   path: /install/
   node: manuals
-- title: Glossary
-  path: /glossary/
-  node: glossary
 - title: Reference
   path: /reference/
   node: reference
@@ -27,14 +24,10 @@ guides:
     section:
     - title: "Part 1: Orientation and setup"
       path: /get-started/
-    - title: "Part 2: Containerizing an application"
+    - title: "Part 2: Build and run your image"
       path: /get-started/part2/
-    - title: "Part 3: Deploying to Kubernetes"
+    - title: "Part 3: Share images on Docker Hub"
       path: /get-started/part3/
-    - title: "Part 4: Deploying to Swarm"
-      path: /get-started/part4/
-    - title: "Part 5: Sharing images on Docker Hub"
-      path: /get-started/part5/
   - path: /get-started/resources/
     title: "Educational resources"
 - sectiontitle: Develop with Docker
@@ -95,8 +88,6 @@ guides:
       section:
       - path: /network/links/
         title: (Legacy) Container links
-      - path: /network/overlay-standalone.swarm/
-        title: Overlay networks for Swarm Classic
 - sectiontitle: Manage application data
   section:
     - path: /storage/
@@ -129,6 +120,14 @@ guides:
         title: Use the VFS storage driver
 - sectiontitle: Run your app in production
   section:
+  - sectiontitle: Orchestration
+    section:
+    - title: "Overview"
+      path: /get-started/orchestration/
+    - title: "Deploy to Kubernetes"
+      path: /get-started/kube-deploy/
+    - title: "Deploy to Swarm"
+      path: /get-started/swarm-deploy/
   - sectiontitle: Configure all objects
     section:
     - path: /config/labels-custom-metadata/
@@ -143,12 +142,8 @@ guides:
       title: Configure and run Docker
     - path: /config/daemon/systemd/
       title: Control Docker with systemd
-  - sectiontitle: Work with external tools
-    section:
-    - path: /config/thirdparty/
-      title: Third-party monitoring tools
-    - path: /config/thirdparty/prometheus/
-      title: Collect Docker metrics with Prometheus
+  - path: /config/daemon/prometheus/
+    title: Collect metrics with Prometheus
   - sectiontitle: Configure containers
     section:
     - path: /config/containers/start-containers-automatically/
@@ -197,16 +192,6 @@ guides:
           title: Journald logging driver
         - path: /config/containers/logging/splunk/
           title: Splunk logging driver
-    - sectiontitle: Work with external tools
-      section:
-      - path: /config/thirdparty/dsc/
-        title: PowerShell DSC usage
-      - path: /config/thirdparty/ansible/
-        title: Ansible
-      - path: /config/thirdparty/chef/
-        title: Chef
-      - path: /config/thirdparty/puppet/
-        title: Puppet
     - sectiontitle: Security
       section:
       - path: /engine/security/security/
@@ -325,23 +310,7 @@ guides:
     title: View the docs archives
 
 reference:
-- sectiontitle: File formats
-  section:
-  - title: Dockerfile reference
-    path: /engine/reference/builder/
-  - sectiontitle: Compose file reference
-    section:
-    - path: /compose/compose-file/
-      title: Version 3
-    - path: /compose/compose-file/compose-file-v2/
-      title: Version 2
-    - path: /compose/compose-file/compose-file-v1/
-      title: Version 1
-    - path: /compose/compose-file/compose-versioning/
-      title: About versions and upgrading
-    - path: /compose/faq/
-      title: Frequently asked questions
-- sectiontitle: Command-Line Interfaces (CLIs)
+- sectiontitle: Command-line reference
   section:
   - sectiontitle: Docker CLI (docker)
     section:
@@ -949,16 +918,16 @@ reference:
       title: up
   - title: Daemon CLI (dockerd)
     path: /engine/reference/commandline/dockerd/
-- sectiontitle: Application Programming Interfaces (APIs)
+- sectiontitle: API reference
   section:
   - sectiontitle: Docker Engine API
     section:
     - path: /engine/api/
       title: Overview
-    - path: /engine/api/get-started/
-      title: Get started
-    - path: /engine/api/sdks/
+    - path: /engine/api/sdk/
       title: SDKs
+    - path: /engine/api/sdk/examples/
+      title: SDK examples
     - path: /engine/api/latest/
       title: v{{ site.latest_engine_api_version }} reference (latest)
     - sectiontitle: API reference by version
@@ -1015,6 +984,20 @@ reference:
     path: /registry/spec/api/
   - title: Template API
     path: /app-template/api-reference/
+- title: Dockerfile reference
+  path: /engine/reference/builder/
+- sectiontitle: Compose file reference
+  section:
+    - path: /compose/compose-file/
+      title: Version 3
+    - path: /compose/compose-file/compose-file-v2/
+      title: Version 2
+    - path: /compose/compose-file/compose-file-v1/
+      title: Version 1
+    - path: /compose/compose-file/compose-versioning/
+      title: About versions and upgrading
+    - path: /compose/faq/
+      title: Frequently asked questions
 - sectiontitle: Drivers and specifications
   section:
   - sectiontitle: Registry image manifests
@@ -1055,6 +1038,8 @@ reference:
       title: S3 storage driver
     - path: /registry/storage-drivers/swift/
       title: Swift storage driver
+- path: /glossary/
+  title: Glossary
 
 
 
@@ -1107,6 +1092,43 @@ manuals:
       title: Optional Linux post-installation steps
   - path: /engine/release-notes/
     title: Release notes
+  - sectiontitle: Previous versions
+    section:
+    - path: /engine/release-notes/18.09/
+      title: Engine 18.09 release notes
+    - path: /engine/release-notes/18.06/
+      title: Engine 18.06 release notes
+    - path: /engine/release-notes/18.05/
+      title: Engine 18.05 release notes
+    - path: /engine/release-notes/18.04/
+      title: Engine 18.04 release notes
+    - path: /engine/release-notes/18.03/
+      title: Engine 18.03 release notes
+    - path: /engine/release-notes/18.02/
+      title: Engine 18.02 release notes
+    - path: /engine/release-notes/18.01/
+      title: Engine 18.01 release notes
+    - path: /engine/release-notes/17.12/
+      title: Engine 17.12 release notes
+    - path: /engine/release-notes/17.11/
+      title: Engine 17.11 release notes
+    - path: /engine/release-notes/17.10/
+      title: Engine 17.10 release notes
+    - path: /engine/release-notes/17.09/
+      title: Engine 17.09 release notes
+    - path: /engine/release-notes/17.07/
+      title: Engine 17.07 release notes
+    - path: /engine/release-notes/17.06/
+      title: Engine 17.06 release notes
+    - path: /engine/release-notes/17.05/
+      title: Engine 17.05 release notes
+    - path: /engine/release-notes/17.04/
+      title: Engine 17.04 release notes
+    - path: /engine/release-notes/17.03/
+      title: Engine 17.03 release notes
+    - path: /engine/release-notes/prior-releases/
+      title: Engine 1.13 and earlier
+
 - sectiontitle: Docker Assemble
   section:
   - path: /assemble/install/
@@ -1131,6 +1153,8 @@ manuals:
     title: Overview of Docker Compose
   - path: /compose/install/
     title: Install Compose
+  - path: /compose/release-notes/
+    title: Release notes
   - path: /compose/gettingstarted/
     title: Getting started
   - path: /compose/swarm/
@@ -1319,7 +1343,7 @@ manuals:
   title: Docker Template
 - sectiontitle: Open-source projects
   section:
-  - sectiontitle: Docker Notary
+  - sectiontitle: Notary
     section:
     - path: /notary/getting_started/
       title: Get started with Notary
@@ -1379,16 +1403,14 @@ manuals:
   title: Release notes
 - sectiontitle: Superseded products and tools
   section:
-  - path: /cs-engine/1.13/release-notes/
-    title: CS Docker Engine
-  - path: /release-notes/docker-engine/
-    title: Docker (1.13 and earlier)
   - sectiontitle: Docker Machine
     section:
     - path: /machine/overview/
       title: Machine overview
     - path: /machine/install-machine/
       title: Install Machine
+    - path: /machine/release-notes/
+      title: Release notes
     - path: /machine/get-started/
       title: Get started with a local VM
     - path: /machine/get-started-cloud/
@@ -1485,14 +1507,14 @@ manuals:
           title: VMware vSphere
       - path: /machine/migrate-to-machine/
         title: Migrate from Boot2Docker to Machine
-      - path: /release-notes/docker-machine/
-        title: Docker Machine release notes
   - sectiontitle: Docker Swarm (standalone)
     section:
     - path: /swarm/overview/
       title: Swarm overview
     - path: /swarm/get-swarm/
       title: How to get Swarm
+    - path: /swarm/release-notes/
+      title: Release notes
     - path: /swarm/install-w-machine/
       title: Evaluate Swarm in a sandbox
     - path: /swarm/plan-for-production/
@@ -1513,6 +1535,8 @@ manuals:
       title: High availability in Swarm
     - path: /swarm/networking/
       title: Swarm and container networks
+    - path: /swarm/multi-host-networking/
+      title: Multi-host networking
     - path: /swarm/discovery/
       title: Discovery
     - path: /swarm/provision-with-machine/
@@ -1547,8 +1571,6 @@ manuals:
       title: API response codes
     - path: /swarm/swarm-api/
       title: Docker Swarm API
-    - path: /release-notes/docker-swarm/
-      title: Docker Swarm release notes
   - sectiontitle: Docker Toolbox (legacy)
     section:
     - path: /toolbox/overview/

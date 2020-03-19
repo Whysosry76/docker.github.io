@@ -5,11 +5,11 @@ title: Run the Docker daemon as a non-root user (Rootless mode)
 ---
 
 Rootless mode allows running the Docker daemon and containers as a non-root
-user, for the sake of mitigating potentail vulnerabilities in the daemon and
+user, for the sake of mitigating potential vulnerabilities in the daemon and
 the container runtime.
 
 Rootless mode does not require root privileges even for installation of the
-Docker daemon, as long as [the prerequisites](#prerequiresites) are satisfied.
+Docker daemon, as long as [the prerequisites](#prerequisites) are satisfied.
 
 Rootless mode was introduced in Docker Engine 19.03.
 
@@ -122,8 +122,7 @@ testuser::231072:65536
 
 - To use `ping` command, see [Routing ping packets](#routing-ping-packets)
 
-- To expose privileged TCP/UDP ports (< 1024), see [Exposing privileged ports]
-  (#exposing-privileged-ports)
+- To expose privileged TCP/UDP ports (< 1024), see [Exposing privileged ports](#exposing-privileged-ports)
 
 ## Install
 
@@ -144,7 +143,7 @@ $ curl -fsSL https://get.docker.com/rootless | sh
 # WARN: dockerd is not in your current PATH or pointing to /home/testuser/bin/dockerd
 # Make sure the following environment variables are set (or add them to ~/.bashrc):
 
-export PATH=/home/testuser:/bin:$PATH
+export PATH=/home/testuser/bin:$PATH
 export PATH=$PATH:/sbin
 export DOCKER_HOST=unix:///run/user/1001/docker.sock
 
@@ -181,7 +180,7 @@ To run the daemon directly without systemd, you need to run
 $ dockerd-rootless.sh --experimental --storage-driver vfs
 ```
 
-As Rootless mode is experimental, currently you always need to run
+As Rootless mode is experimental, you need to run
 `dockerd-rootless.sh` with `--experimental`.
 You also need `--storage-driver vfs` unless using Ubuntu or Debian 10 kernel.
 You don't need to care these flags if you manage the daemon using systemd, as
@@ -258,7 +257,7 @@ Or add `net.ipv4.ip_unprivileged_port_start=0` to `/etc/sysctl.conf` (or
 
 ### Limiting resources
 
-Currently rootless mode ignores cgroup-related `docker run` flags such as 
+Currently, rootless mode ignores cgroup-related `docker run` flags such as 
 `--cpus` and `memory`.
 
 However, traditional `ulimit` and [`cpulimit`](https://github.com/opsengine/cpulimit)

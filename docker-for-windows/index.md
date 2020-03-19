@@ -228,49 +228,25 @@ You can also move the disk image to a different location. If you attempt to move
 
 #### File sharing
 
-Choose the local directories you'd like to share with your Linux containers. File sharing is required for mounting volumes in [Linux containers](#switch-between-windows-and-linux-containers),
- not for Windows containers. For Linux containers, you need to share the drive
- where the Dockerfile and volume are located. Otherwise, you get `file not found` or `cannot start service` errors at runtime. See [Volume mounting requires shared drives for Linux containers](troubleshoot.md#volume-mounting-requires-shared-drives-for-linux-containers).
+Use File sharing to allow local drives on Windows to be shared with Linux containers.
+This is especially useful for
+editing source code in an IDE on the host while running and testing the code in a container.
+Note that configuring file sharing is not necessary for Windows containers, only [Linux containers](#switch-between-windows-and-linux-containers).
+ If a drive is not shared with a Linux container you may get `file not found` or `cannot start service` errors at runtime. See [Volume mounting requires shared drives for Linux containers](troubleshoot.md#volume-mounting-requires-shared-drives-for-linux-containers).
 
-File sharing permissions are tied to the credentials you provide here. If
-you run `docker` commands under a different username than the one configured
-here, your containers cannot access the mounted volumes.
-
-When you select a local drive to share with your containers, Docker Desktop prompts you for your Windows system (domain)
-username and password. Enter your credentials and then click **Apply & Restart**.
+**Apply & Restart** makes the drives available to containers using Docker's bind mount (`-v`) feature.
 
 > Tips on shared drives, permissions, and volume mounts
 >
- * If possible, avoid volume mounts from the Windows host, and instead mount on
- the Linux VM, or use a [data volume](/engine/tutorials/dockervolumes.md#data-volumes)
- (named volume) or [data container](/engine/tutorials/dockervolumes.md#creating-and-mounting-a-data-volume-container). There are a number of issues with using host-mounted volumes and network paths
- for database files. See [Volume mounts from host paths use a nobrl option to override database locking](troubleshoot.md#volume-mounts-from-host-paths-use-a-nobrl-option-to-override-database-locking).
+ * Shared drives are designed to allow application code to be edited on the host while being executed in containers. For non-code items
+ such as cache directories or databases, the performance will be much better if they are stored in
+ the Linux VM, using a [data volume](/engine/tutorials/dockervolumes.md#data-volumes)
+ (named volume) or [data container](/engine/tutorials/dockervolumes.md#creating-and-mounting-a-data-volume-container).
 >
  * Docker Desktop sets permissions to read/write/execute for users, groups and others [0777 or a+rwx](http://permissions-calculator.org/decode/0777/).
    This is not configurable. See [Permissions errors on data directories for shared volumes](troubleshoot.md#permissions-errors-on-data-directories-for-shared-volumes).
 >
- * Ensure the domain user has access to shared drives, as described in [Verify domain user has permissions for shared drives](troubleshoot.md#verify-domain-user-has-permissions-for-shared-drives-volumes).
->
- * You can share local drives with your _containers_ but not with Docker Machine
-nodes. See the FAQ, [Can I share local drives and filesystem with my Docker Machine VMs?](faqs.md#can-i-share-local-drives-and-filesystem-with-my-docker-machine-vms).
->
-
-#### Firewall rules for shared drives
-
-Shared drives require port 445 to be open between the host machine and the
-virtual machine that runs Linux containers. Docker detects if port 445 is closed
-and shows the following message when you try to add a shared drive:
-
-![Port 445 blocked](images/shared-drive-firewall-blocked.png){:width="600px"}
-
-To share the drive, allow connections between the Windows host machine and the
-virtual machine in Windows Firewall or your third party firewall software. You
-do not need to open port 445 on any other network.
-
-By default, allow connections to `10.0.75.1` on port 445 (the Windows host) from
-`10.0.75.2` (the virtual machine). If your firewall rules seem correct, you may
-need to toggle or
-[reinstall the File and Print sharing service on the Hyper-V virtual network card](http://stackoverflow.com/questions/42203488/settings-to-windows-firewall-to-allow-docker-for-windows-to-share-drive/43904051#43904051)
+ * Windows presents a case-insensitive view of the filesystem to applications while Linux is case-sensitive. On Linux it is possible to create 2 separate files: `test` and `Test`, while on Windows these filenames would actually refer to the same underlying file. This can lead to problems where an app works correctly on a developer Windows machine (where the file contents are shared) but fails when run in Linux in production (where the file contents are distinct). To avoid this, Docker Desktop insists that all shared files are accessed as their original case. Therefore if a file is created called `test`, it must be opened as `test`. Attempts to open `Test` will fail with "No such file or directory". Similarly once a file called `test` is created, attempts to create a second file called `Test` will fail.
 
 #### Shared drives on demand
 

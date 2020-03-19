@@ -13,12 +13,34 @@ This page contains information about the new features, improvements, known issue
 For information about Edge releases, see the [Edge release notes](edge-release-notes). For Docker Desktop system requirements, see
 [What to know before you install](install.md#what-to-know-before-you-install).
 
+## Docker Desktop Community 2.2.0.4
+2020-03-13
+
+> [Download](https://hub.docker.com/editions/community/docker-ce-desktop-mac/)
+
+### Upgrades
+
+- [Docker 19.03.8](https://github.com/docker/docker-ce/releases/tag/v19.03.8)
+
+### Bug fixes and minor changes
+
+- Kubernetes: Persistent volumes created by claims are now stored in the virtual machine. Fixes [docker/for-win#5665](https://github.com/docker/for-win/issues/5665).
+- Fixed an issue which caused Docker Desktop Dashboard to attempt connecting to all exposed ports inside a container. Fixes [docker/for-mac#4264](https://github.com/docker/for-mac/issues/4264).
+
+## Docker Desktop Community 2.2.0.3
+2020-02-11
+
+> [Download](https://download.docker.com/mac/stable/42716/Docker.dmg)
+
+### Upgrades
+
+- [Docker Compose 1.25.4](https://github.com/docker/compose/releases/tag/1.25.4)
+- [Go 1.12.16](https://golang.org/doc/devel/release.html#go1.12)
+
 ## Docker Desktop Community 2.2.0.0
 2020-01-21
 
-> [Download](https://hub.docker.com/?overlay=onboarding)
->
-> You must sign in to Docker Hub to download Docker Desktop.
+> [Download](https://download.docker.com/mac/stable/42247/Docker.dmg)
 
 Docker Desktop 2.2.0.0 contains a Kubernetes upgrade. Your local Kubernetes cluster will be reset after installing this version.
 
